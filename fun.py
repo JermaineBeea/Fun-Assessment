@@ -1,4 +1,4 @@
-def dog_years(age_in_human_years, threshold = 20):
+def dog_years(age_in_human_years):
     
     """
     Create a program that counts a dog's age in dog's years. The program should only calculate dog years until 20 human years.
@@ -10,11 +10,12 @@ def dog_years(age_in_human_years, threshold = 20):
     The dog's age in dog's years is 73
     ```
     """
+    threshold = 20
     if age_in_human_years <= 20:
         is_over_2 = age_in_human_years > 2
         return age_in_human_years * 10.5 if is_over_2  else  2 * 10.5 + (age_in_human_years - 2)*4
     else:
-        raise ValueError (f'Dog age in human years cannot be greate than {threshold} ')
+        raise ValueError (f'Dog age in human years cannot be greater than {threshold} ')
 
  
 def fizzbuzz(num):
@@ -27,26 +28,30 @@ def fizzbuzz(num):
     Expected Output:
     fizzbuzz(15) => "1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz"
     """
-  
-    list_numbers = list(str(num))
-    list_return = []
+
+    if not isinstance(num, (float, int)):
+        raise TypeError(f'Invalid type [{type(num)}] num must be of type int or float')
     
-    for number in list_numbers:
-        case_1 = number % 3 == 0
-        case_2 = number % 5 == 0
+    list_return = []
+
+    for number in range(1, num + 1):
+        case_1 = number % 3 == 0 and number > 1
+        case_2 = number % 5 == 0 and number > 1
         case_3 = case_1 and case_2
 
         if case_3:
-            yield 'FizzBuzz'
+            list_return.append('FizzBuzz')
         
         elif case_2: 
-            yield 'Buzz'
+            list_return.append('Buzz')
         
         elif case_1: 
-            yield 'Fizz'
+            list_return.append('Fizz')
         
         else: 
-            yield number
+            list_return.append(str(number))
+    
+    return ' '.join(list_return)
         
 
 def word_lengths(sentence):
@@ -60,8 +65,12 @@ def word_lengths(sentence):
     Output: {'Aunty': 5, 'Yankho': 6, 'is': 2, 'amazing': 7}
     ```
     """
+    #enter your code here    
+    split_sent = sentence.split()
+    dictionary = {word: len(word) for word in split_sent}
+
+    return dictionary
     
-    #enter your code here
 
 def cube_sum(number):
     """
@@ -72,7 +81,17 @@ def cube_sum(number):
     cube_sum(123) => 1^3 + 2^3 + 3^3 = 1 + 8 + 27 = 36
     ```
     """
-    
-    #enter your code here
+    sum = 0
+    str_number = list(str(number))
 
-fizzbuzz(1235)
+    for num in str_number:
+        num = int(num)
+        sum += num ** 3
+    
+    return sum
+
+
+Test_func = dog_years
+input =  10
+
+print(Test_func(input))
