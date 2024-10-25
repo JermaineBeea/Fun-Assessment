@@ -10,6 +10,9 @@ def dog_years(age_in_human_years):
     The dog's age in dog's years is 73
     ```
     """
+    if not isinstance(age_in_human_years, int):
+        raise TypeError(f'Invalid type [{type(age_in_human_years)}] age_in_human_years must be of type int')
+    
     threshold = 20
     if age_in_human_years <= 20:
         is_over_2 = age_in_human_years > 2
@@ -29,8 +32,8 @@ def fizzbuzz(num):
     fizzbuzz(15) => "1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz"
     """
 
-    if not isinstance(num, (float, int)):
-        raise TypeError(f'Invalid type [{type(num)}] num must be of type int or float')
+    if not isinstance(num, int):
+        raise TypeError(f'Invalid type [{type(num)}] number must be of type int')
     
     list_return = []
 
@@ -81,6 +84,9 @@ def cube_sum(number):
     cube_sum(123) => 1^3 + 2^3 + 3^3 = 1 + 8 + 27 = 36
     ```
     """
+    if not isinstance(number, int):
+        raise TypeError(f'Invalid type [{type(number)}] number must be of type int')
+    
     sum = 0
     str_number = list(str(number))
 
