@@ -96,6 +96,9 @@ def cube_sum(number)-> int:
     if not isinstance(number, int):
         raise ValueError
     
+    if number < 0:
+        raise ValueError
+    
     sum = 0
     str_number = list(str(number))
 
@@ -105,13 +108,3 @@ def cube_sum(number)-> int:
     
     return sum
 
-if __name__ == '__main__':
-    import argparse
-    # TEST FUNCTIONS
-    functions = fizzbuzz, word_lengths, cube_sum
-    inputs =  7, 'How are you', 15
-
-    dog_years ()
-    
-    for func, input in zip(functions, inputs):
-        print(f'{func.__name__}({input}) -> {func(input)}')
