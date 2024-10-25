@@ -10,7 +10,7 @@ def dog_years() -> int:
     The dog's age in dog's years is 73
     ```
     """
-    age_in_human_years = input(f'Enter age in human years: ')
+    age_in_human_years = input(f"Input a dog's age in human years: ")
 
     age_in_human_years = int(age_in_human_years)
 
@@ -111,7 +111,7 @@ if __name__ == '__main__':
     functions = fizzbuzz, word_lengths, cube_sum
     inputs =  7, 'How are you', 15
 
-    print(dog_years())
-
+    dog_years ()
+    
     for func, input in zip(functions, inputs):
         print(f'{func.__name__}({input}) -> {func(input)}')
