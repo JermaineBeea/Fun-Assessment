@@ -1,4 +1,4 @@
-def dog_years():
+def dog_years(age_in_human_years, threshold = 20):
     
     """
     Create a program that counts a dog's age in dog's years. The program should only calculate dog years until 20 human years.
@@ -10,9 +10,13 @@ def dog_years():
     The dog's age in dog's years is 73
     ```
     """
+    if age_in_human_years <= 20:
+        is_over_2 = age_in_human_years > 2
+        return age_in_human_years * 10.5 if is_over_2  else  2 * 10.5 + (age_in_human_years - 2)*4
+    else:
+        raise ValueError (f'Dog age in human years cannot be greate than {threshold} ')
 
-    #enter your code here
-
+ 
 def fizzbuzz(num):
     """
     Create a program that returns the numbers as a string from 1 to num. 
@@ -23,10 +27,27 @@ def fizzbuzz(num):
     Expected Output:
     fizzbuzz(15) => "1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz"
     """
-
-    #enter your code here
-
+  
+    list_numbers = list(str(num))
+    list_return = []
     
+    for number in list_numbers:
+        case_1 = number % 3 == 0
+        case_2 = number % 5 == 0
+        case_3 = case_1 and case_2
+
+        if case_3:
+            yield 'FizzBuzz'
+        
+        elif case_2: 
+            yield 'Buzz'
+        
+        elif case_1: 
+            yield 'Fizz'
+        
+        else: 
+            yield number
+        
 
 def word_lengths(sentence):
     """
@@ -53,3 +74,5 @@ def cube_sum(number):
     """
     
     #enter your code here
+
+fizzbuzz(1235)
