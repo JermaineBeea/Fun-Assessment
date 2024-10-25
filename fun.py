@@ -1,4 +1,4 @@
-def dog_years(age_in_human_years):
+def dog_years(age_in_human_years) -> int:
     
     """
     Create a program that counts a dog's age in dog's years. The program should only calculate dog years until 20 human years.
@@ -16,12 +16,14 @@ def dog_years(age_in_human_years):
     threshold = 20
     if age_in_human_years <= 20:
         is_over_2 = age_in_human_years > 2
-        return age_in_human_years * 10.5 if is_over_2  else  2 * 10.5 + (age_in_human_years - 2)*4
+
+        # return dogs age as an integer
+        return int(2 * 10.5 + (age_in_human_years - 2)*4 if is_over_2  else  2 * 10.5)
     else:
         raise ValueError (f'Dog age in human years cannot be greater than {threshold} ')
 
  
-def fizzbuzz(num):
+def fizzbuzz(num) -> int:
     """
     Create a program that returns the numbers as a string from 1 to num. 
     But for multiples of three print “Fizz” instead of the number, 
@@ -57,7 +59,7 @@ def fizzbuzz(num):
     return ' '.join(list_return)
         
 
-def word_lengths(sentence):
+def word_lengths(sentence)-> str:
     """
     Create a program that takes a sentence and returns a dictionary with each unique word
     as the key and the length of the word as the value.
@@ -68,6 +70,10 @@ def word_lengths(sentence):
     Output: {'Aunty': 5, 'Yankho': 6, 'is': 2, 'amazing': 7}
     ```
     """
+
+    if not isinstance(sentence, str):
+        raise TypeError(f'Invalid data type {type(sentence)}\nData type must be a str')
+    
     #enter your code here    
     split_sent = sentence.split()
     dictionary = {word: len(word) for word in split_sent}
@@ -75,7 +81,7 @@ def word_lengths(sentence):
     return dictionary
     
 
-def cube_sum(number):
+def cube_sum(number)-> int:
     """
     Create a program that calculates the sum of the cubes of each digit in a number.
     
@@ -97,7 +103,8 @@ def cube_sum(number):
     return sum
 
 
-Test_func = dog_years
-input =  10
+functions = dog_years, fizzbuzz, word_lengths, cube_sum
+inputs =  15, 7, 'How are you', 15
 
-print(Test_func(input))
+for func, input in zip(functions, inputs):
+    print(f'{func.__name__}({input}) -> {func(input)}')
