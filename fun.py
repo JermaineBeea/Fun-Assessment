@@ -1,4 +1,4 @@
-def dog_years(age_in_human_years) -> int:
+def dog_years() -> int:
     
     """
     Create a program that counts a dog's age in dog's years. The program should only calculate dog years until 20 human years.
@@ -10,15 +10,18 @@ def dog_years(age_in_human_years) -> int:
     The dog's age in dog's years is 73
     ```
     """
-    if not isinstance(age_in_human_years, int):
-        raise TypeError(f'Invalid type [{type(age_in_human_years)}] age_in_human_years must be of type int')
-    
+    age_in_human_years = input(f'Enter age in human years: ')
+
+    age_in_human_years = int(age_in_human_years)
+
     threshold = 20
+
     if age_in_human_years <= 20:
         is_over_2 = age_in_human_years > 2
 
         # return dogs age as an integer
-        return int(2 * 10.5 + (age_in_human_years - 2)*4 if is_over_2  else  2 * 10.5)
+        dog_years = int(2 * 10.5 + (age_in_human_years - 2)*4 if is_over_2  else  2 * 10.5)
+        print (f"The dog's age in dog's years is {dog_years}")
     else:
         raise ValueError (f'Dog age in human years cannot be greater than {threshold} ')
 
@@ -72,7 +75,7 @@ def word_lengths(sentence)-> str:
     """
 
     if not isinstance(sentence, str):
-        raise TypeError(f'Invalid data type {type(sentence)}\nData type must be a str')
+        raise ValueError
     
     #enter your code here    
     split_sent = sentence.split()
@@ -91,7 +94,7 @@ def cube_sum(number)-> int:
     ```
     """
     if not isinstance(number, int):
-        raise TypeError(f'Invalid type [{type(number)}] number must be of type int')
+        raise ValueError
     
     sum = 0
     str_number = list(str(number))
@@ -102,9 +105,13 @@ def cube_sum(number)-> int:
     
     return sum
 
+if __name__ == '__main__':
+    import argparse
+    # TEST FUNCTIONS
+    functions = fizzbuzz, word_lengths, cube_sum
+    inputs =  7, 'How are you', 15
 
-functions = dog_years, fizzbuzz, word_lengths, cube_sum
-inputs =  15, 7, 'How are you', 15
+    print(dog_years())
 
-for func, input in zip(functions, inputs):
-    print(f'{func.__name__}({input}) -> {func(input)}')
+    for func, input in zip(functions, inputs):
+        print(f'{func.__name__}({input}) -> {func(input)}')
